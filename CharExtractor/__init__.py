@@ -60,6 +60,3 @@ def filtered_value(df, column, operator, value):
         a= lambda df,column, val: df[df[column]==val]
         x= a(df,column,value)
     return x
-
-filtered_dataframe=print(filtered_value(marvel_new, 'series', '>', 50))
-
