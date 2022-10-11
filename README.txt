@@ -1,0 +1,1 @@
+This is a very simple API call to extract the charcter list from Marvel website and filter them.
