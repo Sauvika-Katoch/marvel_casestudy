@@ -3,6 +3,16 @@ import json
 import pandas as pd
 import warnings
 warnings.simplefilter("ignore")
+import argparse  
+parser = argparse.ArgumentParser()  
+
+parser.add_argument("apikey", help = "Public API Key")  
+parser.add_argument("hash", help = "Hash value of ts+private key+ public key")  
+
+args = parser.parse_args()
+
+apikey_new=args.apikey
+hash_new=args.hash
 
 def newfunc(startchar,apikey='NULL',hash='NULL'):
     if(apikey=='NULL' or hash=='NULL'):
@@ -29,7 +39,8 @@ def newfunc(startchar,apikey='NULL',hash='NULL'):
             
         return marvel
 
-marvel_new=newfunc('s','4eaeca831e75837712eaef3a1d4a1563','052a323c7c22a78965492fa15116c906')
+
+marvel_new=newfunc('s',apikey_new, hash_new)
 
 marvel_new['comics']=marvel_new['comics'].astype(int)
 marvel_new['id']=marvel_new['id'].astype(int)
@@ -50,4 +61,3 @@ def filtered_value(df, column, operator, value):
     return x
 
 filtered_dataframe=print(filtered_value(marvel_new, 'series', '>', 50))
-
